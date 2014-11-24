@@ -45,6 +45,20 @@ public void testShutDownweb()
 {
 driver.quit();
 }
+
+@Before("@app")
+
+public void startUpApp()
+{
+	driver =new FirefoxDriver();
+}
+
+@After("@app")
+
+public void testShutDownApp()
+{
+driver.quit();
+}
 	@Given("^I am on the dixonstraning wesite$")
 	public void shouldNavigateDixonsSite() throws Throwable {
 		
@@ -78,6 +92,15 @@ driver.quit();
 	@Then("^I should see text \"([^\"]*)\"$")
 	public void I_should_see_text(String arg1) throws Throwable {
 	    Assert.assertEquals("Product Learning Centre", ("Product Learning Centre"));
+	}
+	@When("^I click on MY TRAINING PLAN EXPLAINED$")
+	public void I_click_on_MY_TRAINING_PLAN_EXPLAINED() throws Throwable {
+		  driver.navigate().to("https://www.dixonsretailtraining.co.uk/DixonsLMS/MyTrainingPlanExplained");
+	    
+	}
+	@Then("^I should see text3 \"([^\"]*)\"$")
+	public void I_should_see_text3(String arg1) throws Throwable {
+	    Assert.assertEquals("My Training Plan Explained", ("My Training Plan Explained"));
 	}
 
 
